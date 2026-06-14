@@ -609,6 +609,7 @@ body {
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     margin-left: auto;
     z-index: 120;
 }
@@ -641,6 +642,7 @@ body {
     position: static;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     flex-wrap: wrap;
     gap: 0.25rem;
     min-width: 0;
