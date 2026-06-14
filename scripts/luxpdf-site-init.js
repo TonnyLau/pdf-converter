@@ -198,6 +198,286 @@ function initializeHeroAudienceTyping() {
     setTimeout(tick, 300);
 }
 
+function initializeHomeSmartWorkspace(pdfConverter) {
+    const workspace = document.getElementById('home-workspace');
+    const selectedToolTitle = document.getElementById('home-selected-tool');
+    const pdfOperationPanel = document.getElementById('pdf-operation-panel');
+    const pdfOperationGrid = document.getElementById('pdf-operation-grid');
+    const resetButton = document.getElementById('home-reset-btn');
+    const processButton = document.getElementById('process-btn');
+
+    if (!document.getElementById('upload-area') || !document.getElementById('file-input') || !workspace || !selectedToolTitle || !pdfOperationPanel || !pdfOperationGrid) {
+        return;
+    }
+
+    const supportedAccept = '.pdf,.png,.jpg,.jpeg,.webp,.heif,.heic,.svg,.txt,.html,.htm,.md,.markdown,.docx,.rtf,.xls,.xlsx,.ppt,.pptx';
+    const getUploadArea = () => document.getElementById('upload-area');
+    const getFileInput = () => document.getElementById('file-input');
+    const toolByExtension = new Map([
+        ['png', 'png-to-pdf'],
+        ['jpg', 'jpeg-to-pdf'],
+        ['jpeg', 'jpeg-to-pdf'],
+        ['webp', 'webp-to-pdf'],
+        ['heif', 'heif-to-pdf'],
+        ['heic', 'heif-to-pdf'],
+        ['svg', 'svg-to-pdf'],
+        ['txt', 'txt-to-pdf'],
+        ['html', 'html-to-pdf'],
+        ['htm', 'html-to-pdf'],
+        ['md', 'markdown-to-pdf'],
+        ['markdown', 'markdown-to-pdf'],
+        ['docx', 'word-to-pdf'],
+        ['rtf', 'rtf-to-pdf'],
+        ['xls', 'excel-to-pdf'],
+        ['xlsx', 'excel-to-pdf'],
+        ['ppt', 'ppt-to-pdf'],
+        ['pptx', 'ppt-to-pdf']
+    ]);
+    const pdfOperations = [
+        { label: '合并 PDF', tool: 'merge-pdf', icon: 'fa-object-group' },
+        { label: '拆分 PDF', tool: 'split-pdf', icon: 'fa-cut' },
+        { label: '压缩 PDF', tool: 'compress-pdf', icon: 'fa-compress' },
+        { label: 'PDF 转图片 PNG', tool: 'pdf-to-png', icon: 'fa-image' },
+        { label: '加密 PDF', tool: 'add-password', icon: 'fa-lock' },
+        { label: '解密 PDF', tool: 'remove-password', icon: 'fa-unlock' },
+        { label: '旋转 PDF', tool: 'rotate-pdf', icon: 'fa-redo' },
+        { label: '提取页面', tool: 'extract-pages', icon: 'fa-copy' }
+    ];
+    let pendingPdfFiles = [];
+    let manualToolSelected = false;
+
+    const originalHandleFileSelect = pdfConverter.handleFileSelect.bind(pdfConverter);
+    const originalUpdateProcessButton = pdfConverter.updateProcessButton.bind(pdfConverter);
+
+    pdfConverter.updateProcessButton = function () {
+        originalUpdateProcessButton();
+        const button = document.getElementById('process-btn');
+        if (!button) return;
+
+        const fileCount = this.uploadedFiles.length;
+        if (!this.currentTool) {
+            button.disabled = true;
+            button.innerHTML = '<i class="fas fa-cog"></i> 开始处理';
+            return;
+        }
+
+        if (fileCount === 0) {
+            button.disabled = true;
+            button.innerHTML = '<i class="fas fa-upload"></i> 请先上传文件';
+            return;
+        }
+
+        button.innerHTML = `<i class="fas fa-cog"></i> 处理 ${fileCount} 个文件`;
+    };
+
+    const getExtension = (file) => {
+        const name = (file && file.name) ? file.name : '';
+        const dotIndex = name.lastIndexOf('.');
+        return dotIndex >= 0 ? name.slice(dotIndex + 1).toLowerCase() : '';
+    };
+
+    const setWorkspaceTitle = (toolName) => {
+        if (!toolName) {
+            selectedToolTitle.textContent = '请先上传文件或选择工具';
+            return;
+        }
+        selectedToolTitle.textContent = pdfConverter.getToolConfig(toolName).title || toolName;
+    };
+
+    const showTip = (message, type = 'info') => {
+        if (typeof pdfConverter.showNotification === 'function') {
+            pdfConverter.showNotification(message, type);
+        }
+    };
+
+    const clearPdfChooser = () => {
+        pendingPdfFiles = [];
+        pdfOperationPanel.hidden = true;
+        pdfOperationGrid.innerHTML = '';
+    };
+
+    const resetWorkspace = () => {
+        clearPdfChooser();
+        manualToolSelected = false;
+        pdfConverter.currentTool = null;
+        pdfConverter.uploadedFiles = [];
+        pdfConverter.watermarkImageAsset = null;
+        const currentFileInput = getFileInput();
+        if (currentFileInput) currentFileInput.accept = supportedAccept;
+        pdfConverter.clearFileList();
+        pdfConverter.clearResults();
+        pdfConverter.hideProgress();
+        const options = document.getElementById('tool-options');
+        if (options) options.innerHTML = '';
+        setWorkspaceTitle(null);
+        pdfConverter.updateProcessButton();
+    };
+
+    const activateTool = async (toolName, files = []) => {
+        clearPdfChooser();
+        manualToolSelected = true;
+        pdfConverter.currentTool = toolName;
+        pdfConverter.uploadedFiles = [];
+        pdfConverter.watermarkImageAsset = null;
+        const currentFileInput = getFileInput();
+        if (currentFileInput) currentFileInput.accept = pdfConverter.getToolConfig(toolName).accept || supportedAccept;
+        pdfConverter.clearFileList();
+        pdfConverter.clearResults();
+        pdfConverter.hideProgress();
+        pdfConverter.setupToolOptions(toolName);
+        setWorkspaceTitle(toolName);
+        pdfConverter.updateProcessButton();
+
+        if (files.length) {
+            await originalHandleFileSelect(files);
+        } else {
+            getUploadArea()?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    };
+
+    const showPdfOperations = (files) => {
+        pendingPdfFiles = files;
+        manualToolSelected = false;
+        pdfConverter.currentTool = null;
+        pdfConverter.uploadedFiles = [];
+        pdfConverter.clearFileList();
+        pdfConverter.clearResults();
+        pdfConverter.hideProgress();
+        const options = document.getElementById('tool-options');
+        if (options) options.innerHTML = '';
+        setWorkspaceTitle(null);
+        pdfConverter.updateProcessButton();
+        pdfOperationGrid.innerHTML = pdfOperations.map(operation => `
+            <button class="pdf-operation-btn" type="button" data-tool="${operation.tool}">
+                <i class="fas ${operation.icon}" aria-hidden="true"></i>
+                <span>${operation.label}</span>
+            </button>
+        `).join('');
+        pdfOperationPanel.hidden = false;
+        pdfOperationPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    };
+
+    const inferSmartTool = (files) => {
+        const inferred = files.map(file => {
+            const extension = getExtension(file);
+            if (extension === 'pdf') return { kind: 'pdf', file };
+            const tool = toolByExtension.get(extension);
+            return tool ? { kind: 'tool', tool, file } : { kind: 'unsupported', extension, file };
+        });
+
+        const unsupported = inferred.find(item => item.kind === 'unsupported');
+        if (unsupported) {
+            return { error: `暂不支持该文件类型：${unsupported.file.name}` };
+        }
+
+        const hasPdf = inferred.some(item => item.kind === 'pdf');
+        const nonPdfTools = new Set(inferred.filter(item => item.kind === 'tool').map(item => item.tool));
+        if (hasPdf && nonPdfTools.size > 0) {
+            return { error: '请按同一类型文件分批上传' };
+        }
+        if (nonPdfTools.size > 1) {
+            return { error: '请按同一类型文件分批上传' };
+        }
+        if (hasPdf) {
+            return { needsPdfChoice: true };
+        }
+        return { tool: Array.from(nonPdfTools)[0] };
+    };
+
+    pdfConverter.handleFileSelect = async (files) => {
+        const selectedFiles = Array.from(files || []);
+        if (!selectedFiles.length) {
+            pdfConverter.resetFileInput();
+            return;
+        }
+
+        if (manualToolSelected && pdfConverter.currentTool) {
+            await originalHandleFileSelect(selectedFiles);
+            return;
+        }
+
+        const inference = inferSmartTool(selectedFiles);
+        if (inference.error) {
+            resetWorkspace();
+            showTip(inference.error, 'error');
+            pdfConverter.resetFileInput();
+            return;
+        }
+
+        if (inference.needsPdfChoice) {
+            showPdfOperations(selectedFiles);
+            pdfConverter.resetFileInput();
+            return;
+        }
+
+        if (inference.tool) {
+            await activateTool(inference.tool, selectedFiles);
+            return;
+        }
+    };
+
+    pdfOperationGrid.addEventListener('click', (event) => {
+        const button = event.target.closest('[data-tool]');
+        if (!button) return;
+        activateTool(button.dataset.tool, pendingPdfFiles);
+    });
+
+    document.querySelectorAll('.tool-card[data-tool], .home-tool-links .tool-link[data-tool]').forEach(element => {
+        element.addEventListener('click', (event) => {
+            event.preventDefault();
+            activateTool(element.dataset.tool);
+        });
+    });
+
+    document.querySelectorAll('.tool-category-pills [data-filter]').forEach(button => {
+        button.addEventListener('click', () => {
+            const filter = button.dataset.filter;
+            document.querySelectorAll('.tool-category-pills [data-filter]').forEach(item => {
+                item.classList.toggle('active', item === button);
+            });
+            document.querySelectorAll('.tool-card[data-category], .home-tool-links .tool-link[data-category]').forEach(item => {
+                const match = filter === 'all' || item.dataset.category === filter;
+                item.style.display = match ? '' : 'none';
+            });
+        });
+    });
+
+    const searchBar = document.getElementById('tool-search-bar');
+    if (searchBar) {
+        searchBar.addEventListener('input', () => {
+            const searchTerm = searchBar.value.toLowerCase().trim();
+            document.querySelectorAll('.tool-card[data-tool], .home-tool-links .tool-link[data-tool]').forEach(item => {
+                const text = item.textContent.toLowerCase();
+                const tool = (item.dataset.tool || '').toLowerCase();
+                item.style.display = (!searchTerm || text.includes(searchTerm) || tool.includes(searchTerm)) ? '' : 'none';
+            });
+        });
+    }
+
+    if (resetButton) {
+        resetButton.addEventListener('click', resetWorkspace);
+    }
+
+    if (processButton) {
+        processButton.addEventListener('click', () => {
+            if (window.plausible) {
+                setTimeout(() => {
+                    window.plausible('ProcessButtonClick', { props: { tool: pdfConverter.currentTool } });
+                    pdfConverter.processFiles();
+                }, 0);
+                return;
+            }
+            pdfConverter.processFiles();
+        });
+    }
+
+    const currentFileInput = getFileInput();
+    if (currentFileInput) currentFileInput.accept = supportedAccept;
+    pdfConverter.setupDragAndDrop();
+    pdfConverter.bindFileInputEvents();
+    resetWorkspace();
+}
+
 // Enable touch-friendly sorting for page thumbnails using SortableJS
 if (typeof PDFConverterPro !== 'undefined' && typeof Sortable !== 'undefined') {
     PDFConverterPro.prototype.enableThumbnailSorting = function () {
@@ -245,23 +525,13 @@ document.addEventListener('DOMContentLoaded', function () {
     updateThemeOptionState();
 
     // Check if we are on the main page (index.html) by looking for the tools layout
-    const isMainPage = document.querySelector('.tools-grid, .tools-table');
+    const isMainPage = document.querySelector('.home-tool-grid, .tools-grid, .tools-table');
 
     if (isMainPage) {
-        // Main page specific initializations
         window.pdfConverter = new PDFConverterPro();
         console.log('PDF Converter Pro initialized for main page');
         initializeHeroAudienceTyping();
-
-        // Legacy support: make tool cards clickable if present
-        document.querySelectorAll('.tool-card').forEach(card => {
-            card.addEventListener('click', () => {
-                const tool = card.dataset.tool;
-                if (tool) {
-                    window.location.href = `${tool}.html`;
-                }
-            });
-        });
+        initializeHomeSmartWorkspace(window.pdfConverter);
 
         // Handle newsletter form submission
         const newsletterForm = document.getElementById('newsletter-form');
