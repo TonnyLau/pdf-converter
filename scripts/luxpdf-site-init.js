@@ -363,7 +363,7 @@ function initializeLanguageSystem() {
             const toggle = switcher.querySelector('.language-toggle');
             const menu = switcher.querySelector('.language-menu');
             if (toggle) toggle.setAttribute('aria-expanded', 'false');
-            if (menu) menu.hidden = false;
+            if (menu) menu.hidden = true;
         });
     };
     const applyLanguage = (lang, persist = true) => {
@@ -371,9 +371,6 @@ function initializeLanguageSystem() {
         const config = languages[resolved];
         document.documentElement.lang = resolved;
         document.documentElement.dir = config.dir;
-        document.querySelectorAll('.language-menu').forEach((menu) => {
-            menu.hidden = false;
-        });
         document.querySelectorAll('[data-current-language]').forEach((label) => {
             label.textContent = config.label;
         });
@@ -384,6 +381,7 @@ function initializeLanguageSystem() {
         });
         window.pdfswitchI18n = { language: resolved, t, apply: applyTranslations };
         applyTranslations();
+        closeMenus();
         if (persist) {
             try {
                 localStorage.setItem(storageKey, resolved);
