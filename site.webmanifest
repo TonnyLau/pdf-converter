@@ -1,11 +1,11 @@
 {
-    "name": "PDFSwift - Free PDF Tools",
-    "short_name": "PDFSwift",
-    "description": "Free, private, and unlimited PDF conversion and modification tools. Convert, merge, split, and compress PDFs with complete privacy.",
+    "name": "全能PDF - 免费在线 PDF 工具箱",
+    "short_name": "全能PDF",
+    "description": "全能PDF提供合并、拆分、压缩、转换、加密、解密等常用 PDF 工具。上传文件后自动识别类型并推荐合适工具。",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
-    "theme_color": "#3b82f6",
+    "theme_color": "#2F6FED",
     "icons": [
         {
             "src": "/favicon-512.png",
