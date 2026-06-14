@@ -1,4 +1,4 @@
-/* Split-script loader for pdfonly.top */
+/* Split-script loader for PDFSwitch */
 (function () {
     if (window.__luxpdfSplitScriptsLoaded) {
         return;

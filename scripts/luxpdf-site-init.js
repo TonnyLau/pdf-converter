@@ -77,6 +77,102 @@ function initializeFAQAccordion() {
     });
 }
 
+function initializeLanguageSystem() {
+    const languages = {
+        en: { label: 'English', dir: 'ltr' },
+        'zh-CN': { label: '简体中文', dir: 'ltr' },
+        'zh-TW': { label: '繁體中文', dir: 'ltr' },
+        ja: { label: '日本語', dir: 'ltr' },
+        ko: { label: '한국어', dir: 'ltr' },
+        fr: { label: 'Français', dir: 'ltr' },
+        es: { label: 'Español', dir: 'ltr' },
+        tr: { label: 'Türkçe', dir: 'ltr' },
+        fa: { label: 'فارسی', dir: 'rtl' }
+    };
+    const storageKey = 'pdfswitch-language';
+
+    const normalizeLanguage = (lang) => Object.prototype.hasOwnProperty.call(languages, lang) ? lang : 'en';
+    const closeMenus = () => {
+        document.querySelectorAll('.language-switcher.open').forEach((switcher) => {
+            switcher.classList.remove('open');
+            const toggle = switcher.querySelector('.language-toggle');
+            const menu = switcher.querySelector('.language-menu');
+            if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            if (menu) menu.hidden = true;
+        });
+    };
+    const applyLanguage = (lang, persist = true) => {
+        const resolved = normalizeLanguage(lang);
+        const config = languages[resolved];
+        document.documentElement.lang = resolved;
+        document.documentElement.dir = config.dir;
+        document.querySelectorAll('.language-menu').forEach((menu) => {
+            menu.hidden = false;
+        });
+        document.querySelectorAll('[data-current-language]').forEach((label) => {
+            label.textContent = config.label;
+        });
+        document.querySelectorAll('.language-option').forEach((option) => {
+            const isActive = option.dataset.lang === resolved;
+            option.classList.toggle('active', isActive);
+            option.setAttribute('aria-pressed', String(isActive));
+        });
+        if (persist) {
+            try {
+                localStorage.setItem(storageKey, resolved);
+            } catch (_) { /* noop */ }
+        }
+    };
+
+    let savedLanguage = 'en';
+    try {
+        savedLanguage = localStorage.getItem(storageKey) || 'en';
+    } catch (_) { /* noop */ }
+    if (savedLanguage.toLowerCase().startsWith('zh-tw') || savedLanguage.toLowerCase().startsWith('zh-hk')) {
+        savedLanguage = 'zh-TW';
+    } else if (savedLanguage.toLowerCase().startsWith('zh')) {
+        savedLanguage = 'zh-CN';
+    } else {
+        savedLanguage = savedLanguage.split('-')[0].toLowerCase();
+    }
+    applyLanguage(savedLanguage, false);
+
+    if (window.__pdfswitchLanguageEventsBound) return;
+    window.__pdfswitchLanguageEventsBound = true;
+
+    document.addEventListener('click', (event) => {
+        const option = event.target.closest('.language-option');
+        if (option) {
+            applyLanguage(option.dataset.lang || 'en', true);
+            closeMenus();
+            return;
+        }
+
+        const toggle = event.target.closest('.language-toggle');
+        if (toggle) {
+            const switcher = toggle.closest('.language-switcher');
+            if (!switcher) return;
+            const shouldOpen = !switcher.classList.contains('open');
+            closeMenus();
+            if (shouldOpen) {
+                switcher.classList.add('open');
+                toggle.setAttribute('aria-expanded', 'true');
+                const menu = switcher.querySelector('.language-menu');
+                if (menu) menu.hidden = false;
+            }
+            return;
+        }
+
+        if (!event.target.closest('.language-switcher')) {
+            closeMenus();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMenus();
+    });
+}
+
 // Initialize Mobile Navigation (universal)
 function initializeMobileNav() {
     const headerContainer = document.querySelector('.header .container');
@@ -519,6 +615,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize global theming before cloning mobile nav
     initializeThemeSystem();
+
+    // Initialize language controls before cloning mobile nav
+    initializeLanguageSystem();
 
     // Initialize mobile navigation
     initializeMobileNav();

@@ -594,6 +594,88 @@ body {
     display: flex;
     gap: 2rem;
     align-items: center;
+    margin-right: auto;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 1rem;
+    margin-left: 2rem;
+}
+
+.language-switcher {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    z-index: 120;
+}
+
+.language-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    min-height: 2.35rem;
+    padding: 0.45rem 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--background-secondary);
+    color: var(--text-primary);
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.language-toggle:hover,
+.language-switcher.open .language-toggle {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.language-menu {
+    position: static;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.language-menu[hidden] {
+    display: flex;
+}
+
+.language-option {
+    min-height: 2rem;
+    padding: 0.35rem 0.55rem;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    background: transparent;
+    color: var(--text-primary);
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.language-option:hover,
+.language-option.active {
+    border-color: rgba(var(--accent-rgb), 0.35);
+    background: rgba(var(--accent-rgb), 0.12);
+    color: var(--accent-color);
 }
 
 .nav-link {
@@ -3358,11 +3440,49 @@ fication System */
 
 /* Media query for mobile */
 @media (max-width: 768px) {
+    .header .container {
+        flex-wrap: wrap;
+    }
+
     .nav {
         display: none;
     }
 
+    .nav-container {
+        display: contents;
+        justify-content: flex-end;
+        margin-left: auto;
+    }
+
+    .language-switcher {
+        order: 3;
+        flex-basis: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-top: 0.65rem;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .language-switcher::-webkit-scrollbar {
+        display: none;
+    }
+
+    .language-menu {
+        flex-wrap: nowrap;
+        gap: 0.2rem;
+        width: max-content;
+    }
+
+    .language-option {
+        min-height: 1.9rem;
+        padding: 0.32rem 0.45rem;
+        font-size: 0.76rem;
+    }
+
     .hamburger-menu {
+        order: 2;
+        margin-left: auto;
         display: block;
     }
 }
