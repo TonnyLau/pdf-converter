@@ -4056,7 +4056,9 @@ body.home {
 }
 
 .home .header .container {
-    max-width: 1180px;
+    max-width: 1720px;
+    flex-wrap: nowrap;
+    gap: 32px;
 }
 
 .home .logo {
@@ -4071,7 +4073,35 @@ body.home {
 }
 
 .home .nav {
+    flex: 0 0 auto;
     gap: 18px;
+    margin-right: 0;
+}
+
+.home .nav-container {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin-left: clamp(32px, 6vw, 112px);
+    justify-content: space-between;
+}
+
+.home .language-switcher {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin-left: 24px;
+    justify-content: flex-end;
+}
+
+.home .language-toggle {
+    display: none !important;
+}
+
+.home .language-menu,
+.home .language-menu[hidden] {
+    display: flex !important;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    width: 100%;
 }
 
 .home .nav-link {
@@ -4375,16 +4405,48 @@ body.home {
 .home-tool-links {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 10px;
+    gap: 14px;
     margin-top: 14px;
 }
 
 .home .home-tool-links .tool-link {
-    min-height: 44px;
-    padding: 11px 12px;
+    display: grid;
+    grid-template-rows: 30px 1fr;
+    align-content: start;
+    gap: 14px;
+    min-height: 112px;
+    height: 112px;
+    padding: 18px;
+    border: 1px solid var(--home-border);
     border-radius: 8px;
-    text-align: center;
-    font-weight: 700;
+    background: #FFFFFF;
+    color: var(--home-text);
+    text-align: left;
+    text-decoration: none;
+    font-weight: 800;
+    line-height: 1.25;
+    box-shadow: none;
+}
+
+.home .home-tool-links .tool-link:hover {
+    border-color: rgba(47, 111, 237, 0.45);
+    background: #FFFFFF;
+    box-shadow: 0 12px 24px rgba(31, 45, 71, 0.08);
+    transform: translateY(-1px);
+}
+
+.home .home-tool-links .tool-link i {
+    color: var(--home-primary);
+    font-size: 1.45rem;
+    line-height: 1;
+}
+
+.home .home-tool-links .tool-link span {
+    align-self: center;
+    color: var(--home-text);
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1.25;
 }
 
 .home .home-trust-strip {
@@ -4506,6 +4568,11 @@ body.home {
 
     .home .tool-card {
         min-height: 124px;
+    }
+
+    .home .home-tool-links .tool-link {
+        min-height: 104px;
+        height: 104px;
     }
 
     .home .process-section,

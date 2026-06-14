@@ -333,7 +333,7 @@ function initializeLanguageSystem() {
             'jpeg-to-pdf': 'jpegToPdf', 'webp-to-pdf': 'webpToPdf', 'html-to-pdf': 'htmlToPdf', 'markdown-to-pdf': 'markdownToPdf',
             'excel-to-pdf': 'excelToPdf', 'ppt-to-pdf': 'pptToPdf', 'rotate-pdf': 'rotatePdf', 'extract-pages': 'extractPages'
         };
-        Object.entries(linkKeys).forEach(([tool, key]) => setText(`.home-tool-links [data-tool="${tool}"]`, t(key)));
+        Object.entries(linkKeys).forEach(([tool, key]) => setText(`.home-tool-links [data-tool="${tool}"] span`, t(key)));
         setTrustItem(0, 'localFirst', 'localFirstDesc');
         setTrustItem(1, 'smartMatch', 'smartMatchDesc');
         setTrustItem(2, 'freeUse', 'freeUseDesc');
