@@ -3961,6 +3961,11 @@ body.home {
     background: #255CC6;
 }
 
+.home .theme-switcher,
+.home .mobile-nav .theme-switcher {
+    display: none !important;
+}
+
 .home-portal-hero {
     padding: 46px 0 28px;
     background:
