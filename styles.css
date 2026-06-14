@@ -23,7 +23,7 @@
 }
 
 :root {
-    /* LuxPDF Theme: Obsidian-inspired palette */
+    /* PDFSwift Theme: Obsidian-inspired palette */
     --primary-color: #ba453c;           /* Primary actions / badges */
     --primary-dark: #140c0c;            /* Dark base */
     --primary-light: #cfcdc2;           /* Light accent for gradients */
@@ -552,6 +552,30 @@ body {
 
 .logo i {
     color: var(--accent-color);
+}
+
+.brand-mark {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.15em;
+    height: 1.15em;
+    color: var(--accent-color);
+    flex: 0 0 auto;
+}
+
+.brand-mark .fa-file-pdf {
+    font-size: 1em;
+}
+
+.brand-mark .fa-bolt {
+    position: absolute;
+    right: -0.22em;
+    bottom: -0.04em;
+    font-size: 0.55em;
+    color: var(--text-primary);
+    filter: drop-shadow(0 0 2px var(--background-primary));
 }
 
 .nav {
