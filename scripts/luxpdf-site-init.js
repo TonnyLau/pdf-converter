@@ -80,14 +80,14 @@ function initializeFAQAccordion() {
 function initializeLanguageSystem() {
     const languages = {
         en: { label: 'EN', dir: 'ltr' },
-        'zh-CN': { label: '中文', dir: 'ltr' },
-        'zh-TW': { label: 'DE', dir: 'ltr' },
-        ja: { label: 'IT', dir: 'ltr' },
-        ko: { label: '日本語', dir: 'ltr' },
-        fr: { label: '한국어', dir: 'ltr' },
+        zh: { label: '中文', dir: 'ltr' },
+        de: { label: 'DE', dir: 'ltr' },
+        it: { label: 'IT', dir: 'ltr' },
+        ja: { label: '日本語', dir: 'ltr' },
+        ko: { label: '한국어', dir: 'ltr' },
         es: { label: 'ES', dir: 'ltr' },
-        tr: { label: 'FR', dir: 'ltr' },
-        fa: { label: 'RU', dir: 'rtl' }
+        fr: { label: 'FR', dir: 'ltr' },
+        ru: { label: 'RU', dir: 'ltr' }
     };
     const translations = {
         en: {
@@ -109,7 +109,7 @@ function initializeLanguageSystem() {
             smartMatch: 'Smart matching', smartMatchDesc: 'Automatically picks the right tool after upload', freeUse: 'Free to use', freeUseDesc: 'Core tools work without registration',
             terms: 'Terms', changelog: 'Changelog', privacy: 'Privacy', contact: 'Feedback: contact@pdfonly.top', copyright: '© 2025 PDFSwitch. All rights reserved.'
         },
-        'zh-CN': {
+        zh: {
             allTools: '全部工具', convert: '转换', organize: '合并/拆分', compress: '压缩', security: '安全',
             kicker: '在线 PDF 工具箱', title: '所有 PDF 工具，一次上传智能选择',
             subtitle: '拖入 PDF、图片、Word、Excel、PPT、HTML 或文本文件。PDFSwitch 会按文件类型自动匹配工具；PDF 文件可选择合并、拆分、压缩、转图片、加密等操作。',
@@ -128,24 +128,43 @@ function initializeLanguageSystem() {
             smartMatch: '智能匹配', smartMatchDesc: '上传后自动选择合适工具', freeUse: '免费使用', freeUseDesc: '核心工具无需注册',
             terms: '服务条款', changelog: '更新记录', privacy: '隐私政策', contact: '问题反馈：contact@pdfonly.top', copyright: '© 2025 PDFSwitch. All rights reserved.'
         },
-        'zh-TW': {
-            allTools: '全部工具', convert: '轉換', organize: '合併/拆分', compress: '壓縮', security: '安全',
-            kicker: '線上 PDF 工具箱', title: '所有 PDF 工具，一次上傳智慧選擇',
-            subtitle: '拖入 PDF、圖片、Word、Excel、PPT、HTML 或文字檔。PDFSwitch 會依檔案類型自動匹配工具；PDF 檔可選擇合併、拆分、壓縮、轉圖片、加密等操作。',
-            uploadAria: '上傳檔案', uploadTitle: '拖放檔案到這裡', uploadHint: '或點擊選擇檔案', chooseFiles: '選擇檔案',
-            uploadSupport: '支援 PDF、PNG、JPG、WEBP、HEIF、SVG、TXT、HTML、MD、DOCX、RTF、Excel、PPT',
-            currentTask: '目前任務', idleTool: '請先上傳檔案或選擇工具', reset: '重新選擇',
-            start: '開始處理', uploadFirst: '請先上傳檔案', processFiles: '處理 {count} 個檔案', processing: '處理中...', results: '下載結果',
-            pdfChoice: '偵測到 PDF 檔，請選擇要執行的操作', unsupported: '暫不支援此檔案類型：{name}', sameType: '請按同一類型檔案分批上傳',
-            commonTools: '常用工具', searchPlaceholder: '搜尋工具，例如 Word 轉 PDF', all: '全部',
-            mergePdf: '合併 PDF', mergePdfDesc: '多個 PDF 合成一個檔案', splitPdf: '拆分 PDF', splitPdfDesc: '依範圍或頁面拆分',
-            compressPdf: '壓縮 PDF', compressPdfDesc: '減小 PDF 檔案大小', pdfToPng: 'PDF 轉圖片', pdfToPngDesc: '匯出 PNG 圖片',
-            wordToPdf: 'Word 轉 PDF', wordToPdfDesc: 'DOCX 文件轉 PDF', pngToPdf: '圖片轉 PDF', pngToPdfDesc: 'PNG 圖片合成 PDF',
-            addPassword: '加密 PDF', addPasswordDesc: '新增開啟密碼', removePassword: '解密 PDF', removePasswordDesc: '移除已知密碼保護',
-            jpegToPdf: 'JPEG 轉 PDF', webpToPdf: 'WEBP 轉 PDF', htmlToPdf: 'HTML 轉 PDF', markdownToPdf: 'Markdown 轉 PDF', excelToPdf: 'Excel 轉 PDF', pptToPdf: 'PPT 轉 PDF', rotatePdf: '旋轉 PDF', extractPages: '提取頁面',
-            pdfToPngOp: 'PDF 轉圖片 PNG', localFirst: '本機優先', localFirstDesc: '常用處理在瀏覽器內完成',
-            smartMatch: '智慧匹配', smartMatchDesc: '上傳後自動選擇合適工具', freeUse: '免費使用', freeUseDesc: '核心工具無需註冊',
-            terms: '服務條款', changelog: '更新紀錄', privacy: '隱私政策', contact: '問題回饋：contact@pdfonly.top', copyright: '© 2025 PDFSwitch. All rights reserved.'
+        de: {
+            allTools: 'Alle Tools', convert: 'Konvertieren', organize: 'Zusammenfügen/Teilen', compress: 'Komprimieren', security: 'Sicherheit',
+            kicker: 'Online-PDF-Werkzeugkasten', title: 'Alle PDF-Tools, smarte Auswahl beim Hochladen',
+            subtitle: 'Lade PDFs, Bilder, Word-, Excel-, PPT-, HTML- oder Textdateien ab. PDFSwitch erkennt den Dateityp und wählt das passende Werkzeug; PDFs können zusammengeführt, geteilt, komprimiert, in Bilder umgewandelt oder verschlüsselt werden.',
+            uploadAria: 'Dateien hochladen', uploadTitle: 'Dateien hier ablegen', uploadHint: 'oder klicken, um Dateien zu wählen', chooseFiles: 'Dateien wählen',
+            uploadSupport: 'Unterstützt PDF, PNG, JPG, WEBP, HEIF, SVG, TXT, HTML, MD, DOCX, RTF, Excel, PPT',
+            currentTask: 'Aktuelle Aufgabe', idleTool: 'Lade Dateien hoch oder wähle ein Werkzeug', reset: 'Erneut wählen',
+            start: 'Verarbeitung starten', uploadFirst: 'Bitte zuerst Dateien hochladen', processFiles: '{count} Datei(en) verarbeiten', processing: 'Wird verarbeitet...', results: 'Ergebnisse herunterladen',
+            pdfChoice: 'PDF erkannt. Wähle eine Aktion', unsupported: 'Nicht unterstützter Dateityp: {name}', sameType: 'Bitte lade pro Vorgang nur denselben Dateityp hoch.',
+            commonTools: 'Häufige Tools', searchPlaceholder: 'Tools durchsuchen, z. B. Word zu PDF', all: 'Alle',
+            mergePdf: 'PDFs zusammenfügen', mergePdfDesc: 'Mehrere PDFs in einer Datei kombinieren', splitPdf: 'PDF teilen', splitPdfDesc: 'Nach Bereichen oder Seiten teilen',
+            compressPdf: 'PDF komprimieren', compressPdfDesc: 'PDF-Dateigröße reduzieren', pdfToPng: 'PDF zu Bildern', pdfToPngDesc: 'PNG-Bilder exportieren',
+            wordToPdf: 'Word zu PDF', wordToPdfDesc: 'DOCX in PDF umwandeln', pngToPdf: 'Bilder zu PDF', pngToPdfDesc: 'PNG-Bilder zu PDF kombinieren',
+            addPassword: 'PDF verschlüsseln', addPasswordDesc: 'Öffnungspasswort hinzufügen', removePassword: 'PDF entschlüsseln', removePasswordDesc: 'Bekannten Passwortschutz entfernen',
+            jpegToPdf: 'JPEG zu PDF', webpToPdf: 'WEBP zu PDF', htmlToPdf: 'HTML zu PDF', markdownToPdf: 'Markdown zu PDF', excelToPdf: 'Excel zu PDF', pptToPdf: 'PPT zu PDF', rotatePdf: 'PDF drehen', extractPages: 'Seiten extrahieren',
+            pdfToPngOp: 'PDF zu PNG', localFirst: 'Lokal zuerst', localFirstDesc: 'Übliche Verarbeitung läuft im Browser',
+            smartMatch: 'Smarte Zuordnung', smartMatchDesc: 'Wählt das passende Werkzeug nach dem Hochladen', freeUse: 'Kostenlos', freeUseDesc: 'Kernwerkzeuge ohne Registrierung',
+            terms: 'Nutzungsbedingungen', changelog: 'Änderungen', privacy: 'Datenschutz', contact: 'Feedback: contact@pdfonly.top', copyright: '© 2025 PDFSwitch. Alle Rechte vorbehalten.'
+        },
+        it: {
+            allTools: 'Tutti gli strumenti', convert: 'Converti', organize: 'Unisci/Dividi', compress: 'Comprimi', security: 'Sicurezza',
+            kicker: 'Cassetta degli attrezzi PDF online', title: 'Tutti gli strumenti PDF, scelta intelligente al caricamento',
+            subtitle: 'Trascina PDF, immagini, file Word, Excel, PPT, HTML o di testo. PDFSwitch rileva il tipo di file e sceglie lo strumento giusto; i PDF possono essere uniti, divisi, compressi, convertiti in immagini o protetti.',
+            uploadAria: 'Carica file', uploadTitle: 'Trascina i file qui', uploadHint: 'oppure fai clic per scegliere', chooseFiles: 'Scegli file',
+            uploadSupport: 'Supporta PDF, PNG, JPG, WEBP, HEIF, SVG, TXT, HTML, MD, DOCX, RTF, Excel, PPT',
+            currentTask: 'Attività corrente', idleTool: 'Carica file o scegli uno strumento', reset: 'Scegli di nuovo',
+            start: 'Avvia elaborazione', uploadFirst: 'Carica prima i file', processFiles: 'Elabora {count} file', processing: 'Elaborazione...', results: 'Scarica i risultati',
+            pdfChoice: 'PDF rilevato. Scegli un\'azione', unsupported: 'Tipo di file non supportato: {name}', sameType: 'Carica un solo tipo di file per sessione.',
+            commonTools: 'Strumenti comuni', searchPlaceholder: 'Cerca strumenti, es. Word in PDF', all: 'Tutti',
+            mergePdf: 'Unisci PDF', mergePdfDesc: 'Combina più PDF in un file', splitPdf: 'Dividi PDF', splitPdfDesc: 'Dividi per intervalli o pagine',
+            compressPdf: 'Comprimi PDF', compressPdfDesc: 'Riduci la dimensione del PDF', pdfToPng: 'PDF in immagini', pdfToPngDesc: 'Esporta immagini PNG',
+            wordToPdf: 'Word in PDF', wordToPdfDesc: 'Converti DOCX in PDF', pngToPdf: 'Immagini in PDF', pngToPdfDesc: 'Combina immagini PNG in PDF',
+            addPassword: 'Cripta PDF', addPasswordDesc: 'Aggiungi password di apertura', removePassword: 'Decripta PDF', removePasswordDesc: 'Rimuovi protezione con password nota',
+            jpegToPdf: 'JPEG in PDF', webpToPdf: 'WEBP in PDF', htmlToPdf: 'HTML in PDF', markdownToPdf: 'Markdown in PDF', excelToPdf: 'Excel in PDF', pptToPdf: 'PPT in PDF', rotatePdf: 'Ruota PDF', extractPages: 'Estrai pagine',
+            pdfToPngOp: 'PDF in PNG', localFirst: 'Prima in locale', localFirstDesc: 'Le elaborazioni comuni avvengono nel browser',
+            smartMatch: 'Abbinamento intelligente', smartMatchDesc: 'Sceglie automaticamente lo strumento giusto dopo il caricamento', freeUse: 'Gratuito', freeUseDesc: 'Strumenti principali senza registrazione',
+            terms: 'Termini', changelog: 'Cronologia modifiche', privacy: 'Privacy', contact: 'Feedback: contact@pdfonly.top', copyright: '© 2025 PDFSwitch. Tutti i diritti riservati.'
         },
         ja: {
             allTools: 'すべてのツール', convert: '変換', organize: '結合/分割', compress: '圧縮', security: 'セキュリティ',
@@ -223,43 +242,24 @@ function initializeLanguageSystem() {
             smartMatch: 'Coincidencia inteligente', smartMatchDesc: 'Elige la herramienta adecuada tras subir', freeUse: 'Gratis', freeUseDesc: 'Herramientas clave sin registro',
             terms: 'Términos', changelog: 'Registro de cambios', privacy: 'Privacidad', contact: 'Comentarios: contact@pdfonly.top', copyright: '© 2025 PDFSwitch. All rights reserved.'
         },
-        tr: {
-            allTools: 'Tüm Araçlar', convert: 'Dönüştür', organize: 'Birleştir/Böl', compress: 'Sıkıştır', security: 'Güvenlik',
-            kicker: 'Çevrimiçi PDF araç kutusu', title: 'Tüm PDF araçları, akıllı yükleme seçimi',
-            subtitle: 'PDF, görsel, Word, Excel, PPT, HTML veya metin dosyalarını bırakın. PDFSwitch dosya türünü algılar ve doğru aracı seçer; PDF dosyaları birleştirilebilir, bölünebilir, sıkıştırılabilir, görsele dönüştürülebilir veya şifrelenebilir.',
-            uploadAria: 'Dosya yükle', uploadTitle: 'Dosyaları buraya bırakın', uploadHint: 'veya seçmek için tıklayın', chooseFiles: 'Dosya seç',
-            uploadSupport: 'PDF, PNG, JPG, WEBP, HEIF, SVG, TXT, HTML, MD, DOCX, RTF, Excel, PPT desteklenir',
-            currentTask: 'Geçerli görev', idleTool: 'Dosya yükleyin veya araç seçin', reset: 'Yeniden seç',
-            start: 'İşlemeyi başlat', uploadFirst: 'Önce dosya yükleyin', processFiles: '{count} dosyayı işle', processing: 'İşleniyor...', results: 'Sonuçları indir',
-            pdfChoice: 'PDF algılandı. Bir işlem seçin', unsupported: 'Desteklenmeyen dosya türü: {name}', sameType: 'Lütfen her yüklemede aynı dosya türünü kullanın.',
-            commonTools: 'Sık kullanılan araçlar', searchPlaceholder: 'Araç ara, ör. Word to PDF', all: 'Tümü',
-            mergePdf: 'PDF Birleştir', mergePdfDesc: 'Birden çok PDF’yi tek dosyada birleştir', splitPdf: 'PDF Böl', splitPdfDesc: 'Aralığa veya sayfaya göre böl',
-            compressPdf: 'PDF Sıkıştır', compressPdfDesc: 'PDF dosya boyutunu azalt', pdfToPng: 'PDF’den görsele', pdfToPngDesc: 'PNG görselleri dışa aktar',
-            wordToPdf: 'Word’den PDF’ye', wordToPdfDesc: 'DOCX’i PDF’ye dönüştür', pngToPdf: 'Görsellerden PDF’ye', pngToPdfDesc: 'PNG görsellerini PDF’de birleştir',
-            addPassword: 'PDF Şifrele', addPasswordDesc: 'Açma parolası ekle', removePassword: 'PDF Şifresini Kaldır', removePasswordDesc: 'Bilinen parola korumasını kaldır',
-            jpegToPdf: 'JPEG’den PDF’ye', webpToPdf: 'WEBP’den PDF’ye', htmlToPdf: 'HTML’den PDF’ye', markdownToPdf: 'Markdown’dan PDF’ye', excelToPdf: 'Excel’den PDF’ye', pptToPdf: 'PPT’den PDF’ye', rotatePdf: 'PDF Döndür', extractPages: 'Sayfaları çıkar',
-            pdfToPngOp: 'PDF’den PNG’ye', localFirst: 'Önce yerel', localFirstDesc: 'Yaygın işlemler tarayıcıda tamamlanır',
-            smartMatch: 'Akıllı eşleşme', smartMatchDesc: 'Yüklemeden sonra uygun aracı otomatik seçer', freeUse: 'Ücretsiz kullanım', freeUseDesc: 'Temel araçlar kayıt gerektirmez',
-            terms: 'Şartlar', changelog: 'Değişiklikler', privacy: 'Gizlilik', contact: 'Geri bildirim: contact@pdfonly.top', copyright: '© 2025 PDFSwitch. All rights reserved.'
-        },
-        fa: {
-            allTools: 'همه ابزارها', convert: 'تبدیل', organize: 'ادغام/تقسیم', compress: 'فشرده‌سازی', security: 'امنیت',
-            kicker: 'جعبه‌ابزار آنلاین PDF', title: 'همه ابزارهای PDF با انتخاب هوشمند پس از آپلود',
-            subtitle: 'PDF، تصویر، Word، Excel، PPT، HTML یا فایل متنی را رها کنید. PDFSwitch نوع فایل را تشخیص می‌دهد و ابزار مناسب را انتخاب می‌کند؛ برای PDF می‌توانید ادغام، تقسیم، فشرده‌سازی، تبدیل به تصویر و رمزگذاری را انجام دهید.',
-            uploadAria: 'آپلود فایل‌ها', uploadTitle: 'فایل‌ها را اینجا رها کنید', uploadHint: 'یا برای انتخاب کلیک کنید', chooseFiles: 'انتخاب فایل',
-            uploadSupport: 'پشتیبانی از PDF، PNG، JPG، WEBP، HEIF، SVG، TXT، HTML، MD، DOCX، RTF، Excel، PPT',
-            currentTask: 'کار فعلی', idleTool: 'فایل آپلود کنید یا ابزار را انتخاب کنید', reset: 'انتخاب دوباره',
-            start: 'شروع پردازش', uploadFirst: 'ابتدا فایل آپلود کنید', processFiles: 'پردازش {count} فایل', processing: 'در حال پردازش...', results: 'دانلود نتیجه',
-            pdfChoice: 'PDF شناسایی شد. یک عملیات انتخاب کنید', unsupported: 'این نوع فایل پشتیبانی نمی‌شود: {name}', sameType: 'لطفاً هر بار فقط یک نوع فایل را آپلود کنید.',
-            commonTools: 'ابزارهای پرکاربرد', searchPlaceholder: 'جستجوی ابزار، مثل Word to PDF', all: 'همه',
-            mergePdf: 'ادغام PDF', mergePdfDesc: 'چند PDF را در یک فایل ترکیب کنید', splitPdf: 'تقسیم PDF', splitPdfDesc: 'تقسیم بر اساس بازه یا صفحه',
-            compressPdf: 'فشرده‌سازی PDF', compressPdfDesc: 'کاهش حجم فایل PDF', pdfToPng: 'PDF به تصویر', pdfToPngDesc: 'خروجی گرفتن تصویر PNG',
-            wordToPdf: 'Word به PDF', wordToPdfDesc: 'تبدیل DOCX به PDF', pngToPdf: 'تصویر به PDF', pngToPdfDesc: 'ترکیب تصاویر PNG در PDF',
-            addPassword: 'رمزگذاری PDF', addPasswordDesc: 'افزودن رمز عبور باز کردن', removePassword: 'برداشتن رمز PDF', removePasswordDesc: 'حذف محافظت با رمز شناخته‌شده',
-            jpegToPdf: 'JPEG به PDF', webpToPdf: 'WEBP به PDF', htmlToPdf: 'HTML به PDF', markdownToPdf: 'Markdown به PDF', excelToPdf: 'Excel به PDF', pptToPdf: 'PPT به PDF', rotatePdf: 'چرخاندن PDF', extractPages: 'استخراج صفحات',
-            pdfToPngOp: 'PDF به PNG', localFirst: 'اولویت با مرورگر', localFirstDesc: 'پردازش‌های رایج در مرورگر انجام می‌شوند',
-            smartMatch: 'تطبیق هوشمند', smartMatchDesc: 'پس از آپلود ابزار مناسب را خودکار انتخاب می‌کند', freeUse: 'رایگان', freeUseDesc: 'ابزارهای اصلی بدون ثبت‌نام کار می‌کنند',
-            terms: 'شرایط', changelog: 'گزارش تغییرات', privacy: 'حریم خصوصی', contact: 'بازخورد: contact@pdfonly.top', copyright: '© 2025 PDFSwitch. All rights reserved.'
+        ru: {
+            allTools: 'Все инструменты', convert: 'Конвертировать', organize: 'Объединить/Разделить', compress: 'Сжать', security: 'Безопасность',
+            kicker: 'Онлайн-набор PDF-инструментов', title: 'Все PDF-инструменты, умный выбор при загрузке',
+            subtitle: 'Перетащите PDF, изображения, Word, Excel, PPT, HTML или текстовые файлы. PDFSwitch определит тип файла и выберет нужный инструмент; PDF можно объединять, разделять, сжимать, конвертировать в изображения и защищать.',
+            uploadAria: 'Загрузить файлы', uploadTitle: 'Перетащите файлы сюда', uploadHint: 'или нажмите, чтобы выбрать', chooseFiles: 'Выбрать файлы',
+            uploadSupport: 'Поддержка PDF, PNG, JPG, WEBP, HEIF, SVG, TXT, HTML, MD, DOCX, RTF, Excel, PPT',
+            currentTask: 'Текущая задача', idleTool: 'Загрузите файлы или выберите инструмент', reset: 'Выбрать заново',
+            start: 'Начать обработку', uploadFirst: 'Сначала загрузите файлы', processFiles: 'Обработать файлов: {count}', processing: 'Обработка...', results: 'Скачать результаты',
+            pdfChoice: 'Обнаружен PDF. Выберите действие', unsupported: 'Неподдерживаемый тип файла: {name}', sameType: 'Загружайте файлы одного типа за раз.',
+            commonTools: 'Частые инструменты', searchPlaceholder: 'Поиск, напр. Word в PDF', all: 'Все',
+            mergePdf: 'Объединить PDF', mergePdfDesc: 'Собрать несколько PDF в один файл', splitPdf: 'Разделить PDF', splitPdfDesc: 'Разделить по диапазонам или страницам',
+            compressPdf: 'Сжать PDF', compressPdfDesc: 'Уменьшить размер PDF', pdfToPng: 'PDF в изображения', pdfToPngDesc: 'Экспорт изображений PNG',
+            wordToPdf: 'Word в PDF', wordToPdfDesc: 'Конвертировать DOCX в PDF', pngToPdf: 'Изображения в PDF', pngToPdfDesc: 'Собрать PNG-изображения в PDF',
+            addPassword: 'Зашифровать PDF', addPasswordDesc: 'Добавить пароль открытия', removePassword: 'Расшифровать PDF', removePasswordDesc: 'Снять известную парольную защиту',
+            jpegToPdf: 'JPEG в PDF', webpToPdf: 'WEBP в PDF', htmlToPdf: 'HTML в PDF', markdownToPdf: 'Markdown в PDF', excelToPdf: 'Excel в PDF', pptToPdf: 'PPT в PDF', rotatePdf: 'Повернуть PDF', extractPages: 'Извлечь страницы',
+            pdfToPngOp: 'PDF в PNG', localFirst: 'Локально прежде всего', localFirstDesc: 'Основная обработка идёт в браузере',
+            smartMatch: 'Умный подбор', smartMatchDesc: 'Автоматически выбирает подходящий инструмент после загрузки', freeUse: 'Бесплатно', freeUseDesc: 'Базовые инструменты без регистрации',
+            terms: 'Условия', changelog: 'История изменений', privacy: 'Конфиденциальность', contact: 'Обратная связь: contact@pdfonly.top', copyright: '© 2025 PDFSwitch. Все права защищены.'
         }
     };
     const storageKey = 'pdfswitch-language';
@@ -400,10 +400,8 @@ function initializeLanguageSystem() {
     try {
         savedLanguage = localStorage.getItem(storageKey) || 'en';
     } catch (_) { /* noop */ }
-    if (savedLanguage.toLowerCase().startsWith('zh-tw') || savedLanguage.toLowerCase().startsWith('zh-hk')) {
-        savedLanguage = 'zh-TW';
-    } else if (savedLanguage.toLowerCase().startsWith('zh')) {
-        savedLanguage = 'zh-CN';
+    if (savedLanguage.toLowerCase().startsWith('zh')) {
+        savedLanguage = 'zh';
     } else {
         savedLanguage = savedLanguage.split('-')[0].toLowerCase();
     }

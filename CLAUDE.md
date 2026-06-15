@@ -71,7 +71,7 @@ Other libraries (pdf-lib, pdf.js, pica, mammoth, docx-preview, heic2any) are loa
 1. Copy the closest existing `<tool>.html` (e.g. `merge-pdf.html` is the cleanest template).
 2. Add a `getToolConfig('<tool>')` entry in `pdf-converter-ui.js:414-600` (title, accept, description).
 3. Add the tool to the `toolsConfig` array in `luxpdf-site-init.js` (labelKey, tool key, icon).
-4. Add translations for all 9 languages in `luxpdf-site-init.js` (`en`, `zh-CN`, `zh-TW`, `ja`, `ko`, `fr`, `es`, `tr`, `fa`).
+4. Add translations for all 9 languages in `luxpdf-site-init.js` (`en`, `zh`, `de`, `it`, `ja`, `ko`, `es`, `fr`, `ru`).
 5. Implement the conversion in `pdf-converter-converters-a.js` or `-b.js` (use existing tools as patterns — `appendCanvasToPdf` handles pagination for HTML→PDF).
 6. Wire it into the processing switch in `pdf-converter-tools.js`.
 7. Add a related-tools entry on the new page (and update the related-tools section of nearby pages).
