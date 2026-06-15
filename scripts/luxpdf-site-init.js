@@ -79,15 +79,15 @@ function initializeFAQAccordion() {
 
 function initializeLanguageSystem() {
     const languages = {
-        en: { label: 'English', dir: 'ltr' },
-        'zh-CN': { label: '简体中文', dir: 'ltr' },
-        'zh-TW': { label: '繁體中文', dir: 'ltr' },
-        ja: { label: '日本語', dir: 'ltr' },
-        ko: { label: '한국어', dir: 'ltr' },
-        fr: { label: 'Français', dir: 'ltr' },
-        es: { label: 'Español', dir: 'ltr' },
-        tr: { label: 'Türkçe', dir: 'ltr' },
-        fa: { label: 'فارسی', dir: 'rtl' }
+        en: { label: 'EN', dir: 'ltr' },
+        'zh-CN': { label: '中文', dir: 'ltr' },
+        'zh-TW': { label: 'DE', dir: 'ltr' },
+        ja: { label: 'IT', dir: 'ltr' },
+        ko: { label: '日本語', dir: 'ltr' },
+        fr: { label: '한국어', dir: 'ltr' },
+        es: { label: 'ES', dir: 'ltr' },
+        tr: { label: 'FR', dir: 'ltr' },
+        fa: { label: 'RU', dir: 'rtl' }
     };
     const translations = {
         en: {
