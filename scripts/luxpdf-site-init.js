@@ -131,7 +131,7 @@ function initializeLanguageSystem() {
         de: {
             allTools: 'Alle Tools', convert: 'Konvertieren', organize: 'Zusammenfügen/Teilen', compress: 'Komprimieren', security: 'Sicherheit',
             kicker: 'Online-PDF-Werkzeugkasten', title: 'Alle PDF-Tools, smarte Auswahl beim Hochladen',
-            subtitle: 'Lade PDFs, Bilder, Word-, Excel-, PPT-, HTML- oder Textdateien ab. PDFSwitch erkennt den Dateityp und wählt das passende Werkzeug; PDFs können zusammengeführt, geteilt, komprimiert, in Bilder umgewandelt oder verschlüsselt werden.',
+            subtitle: 'Ziehe PDFs, Bilder, Word-, Excel-, PPT-, HTML- oder Textdateien hierher. PDFSwitch erkennt den Dateityp und wählt das passende Werkzeug; PDFs können zusammengeführt, geteilt, komprimiert, in Bilder umgewandelt oder verschlüsselt werden.',
             uploadAria: 'Dateien hochladen', uploadTitle: 'Dateien hier ablegen', uploadHint: 'oder klicken, um Dateien zu wählen', chooseFiles: 'Dateien wählen',
             uploadSupport: 'Unterstützt PDF, PNG, JPG, WEBP, HEIF, SVG, TXT, HTML, MD, DOCX, RTF, Excel, PPT',
             currentTask: 'Aktuelle Aufgabe', idleTool: 'Lade Dateien hoch oder wähle ein Werkzeug', reset: 'Erneut wählen',
@@ -249,7 +249,7 @@ function initializeLanguageSystem() {
             uploadAria: 'Загрузить файлы', uploadTitle: 'Перетащите файлы сюда', uploadHint: 'или нажмите, чтобы выбрать', chooseFiles: 'Выбрать файлы',
             uploadSupport: 'Поддержка PDF, PNG, JPG, WEBP, HEIF, SVG, TXT, HTML, MD, DOCX, RTF, Excel, PPT',
             currentTask: 'Текущая задача', idleTool: 'Загрузите файлы или выберите инструмент', reset: 'Выбрать заново',
-            start: 'Начать обработку', uploadFirst: 'Сначала загрузите файлы', processFiles: 'Обработать файлов: {count}', processing: 'Обработка...', results: 'Скачать результаты',
+            start: 'Начать обработку', uploadFirst: 'Сначала загрузите файлы', processFiles: 'Обработать {count} файлов', processing: 'Обработка...', results: 'Скачать результаты',
             pdfChoice: 'Обнаружен PDF. Выберите действие', unsupported: 'Неподдерживаемый тип файла: {name}', sameType: 'Загружайте файлы одного типа за раз.',
             commonTools: 'Частые инструменты', searchPlaceholder: 'Поиск, напр. Word в PDF', all: 'Все',
             mergePdf: 'Объединить PDF', mergePdfDesc: 'Собрать несколько PDF в один файл', splitPdf: 'Разделить PDF', splitPdfDesc: 'Разделить по диапазонам или страницам',
