@@ -370,14 +370,21 @@ function initializeLanguageSystem() {
         const resolved = normalizeLanguage(lang);
         const config = languages[resolved];
         document.documentElement.lang = resolved;
-        document.documentElement.dir = config.dir;
+        // Keep the document direction LTR so the header/nav layout stays stable.
+        // Apply RTL only to the inline language label and the option buttons that
+        // genuinely render in a RTL script.
+        document.documentElement.removeAttribute('dir');
         document.querySelectorAll('[data-current-language]').forEach((label) => {
             label.textContent = config.label;
+            label.setAttribute('dir', config.dir);
         });
         document.querySelectorAll('.language-option').forEach((option) => {
             const isActive = option.dataset.lang === resolved;
             option.classList.toggle('active', isActive);
             option.setAttribute('aria-pressed', String(isActive));
+            if (option.dataset.dir) {
+                option.setAttribute('dir', option.dataset.dir);
+            }
         });
         window.pdfswitchI18n = { language: resolved, t, apply: applyTranslations };
         applyTranslations();
