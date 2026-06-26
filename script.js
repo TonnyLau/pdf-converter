@@ -5,7 +5,7 @@
     }
     window.__luxpdfSplitScriptsLoaded = true;
 
-    const version = '1.4';
+    const version = '1.5';
     const sources = [
         'scripts/luxpdf-theme.js',
         'scripts/pdf-converter-base.js',

@@ -424,9 +424,9 @@ Object.assign(PDFConverterPro.prototype, {
                 description: 'Convert PDF pages to JPEG images'
             },
             'png-to-pdf': {
-                title: 'PNG to PDF Converter',
-                accept: '.png',
-                description: 'Convert PNG images to PDF'
+                title: 'Images to PDF Converter',
+                accept: '.png,.jpg,.jpeg',
+                description: 'Convert PNG and JPEG images to PDF'
             },
             'jpeg-to-pdf': {
                 title: 'JPEG to PDF Converter',
