@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Project: PDFSwitch (a.k.a. LuxPDF / PDFSwift)
+## Project: PDFOnly (a.k.a. LuxPDF / PDFSwift)
 
 A free, open-source, **100% client-side** web app for PDF, document, and image workflows. Files never leave the browser. Published at https://luxpdf.com (canonical: pdfonly.top). AGPL-3.0 licensed. Funded by donations/sponsors via `.github/FUNDING.yml`.
 
@@ -43,7 +43,7 @@ The original `script.js` was deliberately **split into 8 files** (see header com
 Every tool page (`<tool-name>.html`) is a near-duplicate of the same template:
 - `header` with logo, nav, language switcher, theme switcher (injected by `luxpdf-theme.js`)
 - `main > section.tools-section` with `upload-area`, `file-list`, `tool-options`, `process-btn`, `progress-container`, `results-section`
-- `section.content-section` with "What is PDFSwitch / Why / How-to / FAQ" marketing copy
+- `section.content-section` with "What is PDFOnly / Why / How-to / FAQ" marketing copy
 - `section.related-tools-section` linking to related tools
 - `footer`
 
@@ -81,7 +81,7 @@ Other libraries (pdf-lib, pdf.js, pica, mammoth, docx-preview, heic2any) are loa
 ## Conventions specific to this repo
 
 - Tool filenames and `getToolConfig` keys use **kebab-case** (`merge-pdf`, `pdf-to-png`).
-- Site is referenced as both **PDFSwitch** (in code/markup) and **LuxPDF / PDFSwift** (in README, theme system, `luxpdf-*` scripts). The internal name is drifting — don't introduce a fourth name.
+- Site is referenced as both **PDFOnly** (in code/markup) and **LuxPDF / PDFSwift** (in README, theme system, `luxpdf-*` scripts). The internal name is drifting — don't introduce a fourth name.
 - Both `pdfonly.top` (canonical in `<link rel="canonical">` and OG tags) and `luxpdf.com` (live in `Readme.md`) appear as the public domain. Match the surrounding file's pattern.
 - Plausible analytics: `<script>window.plausible = window.plausible || function () { ... }</script>` is **required** before the deferred Plausible script — it provides a no-op stub. Keep this stub.
 - The `.vscode/settings.json` disables Kiro's MCP — don't re-enable unless asked.

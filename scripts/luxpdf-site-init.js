@@ -158,7 +158,7 @@ function inferHomeSmartTool(files, config) {
 
 (function exposeHomeSmartWorkspaceApi(root) {
     if (!root) return;
-    root.PDFSwitchHomeSmartWorkspace = {
+    root.PDFOnlyHomeSmartWorkspace = {
         createSmartRoutingConfig: createHomeSmartRoutingConfig,
         inferSmartTool: inferHomeSmartTool
     };
@@ -180,7 +180,7 @@ function initializeLanguageSystem() {
         en: {
             allTools: 'All Tools', convert: 'Convert', organize: 'Merge/Split', compress: 'Compress', security: 'Security',
             kicker: 'Online PDF toolkit', title: 'All PDF tools, smart upload routing',
-            subtitle: 'Drop PDFs, images, Word, Excel, PPT, HTML, or text files. PDFSwitch detects the file type and picks the right tool; PDF files can be merged, split, compressed, converted to images, encrypted, and more.',
+            subtitle: 'Drop PDFs, images, Word, Excel, PPT, HTML, or text files. PDFOnly detects the file type and picks the right tool; PDF files can be merged, split, compressed, converted to images, encrypted, and more.',
             uploadAria: 'Upload files', uploadTitle: 'Drop files here', uploadHint: 'or click to choose files', chooseFiles: 'Choose files',
             uploadSupport: 'Supports PDF, PNG, JPG, WEBP, HEIF, SVG, TXT, HTML, MD, DOCX, RTF, Excel, PPT, EPUB',
             currentTask: 'Current task', idleTool: 'Upload files or choose a tool', reset: 'Choose again',
@@ -195,12 +195,12 @@ function initializeLanguageSystem() {
             pdfToPngOp: 'PDF to PNG images', pdfToJpegOp: 'PDF to JPEG images', pdfToTxtOp: 'PDF to text', removePages: 'Remove pages', sortPages: 'Sort pages', addWatermark: 'Add watermark', editMetadata: 'Edit metadata', removeMetadata: 'Remove metadata', flattenPdf: 'Flatten PDF', comparePdfs: 'Compare PDFs',
             localFirst: 'Local first', localFirstDesc: 'Common processing runs in your browser',
             smartMatch: 'Smart matching', smartMatchDesc: 'Automatically picks the right tool after upload', freeUse: 'Free to use', freeUseDesc: 'Core tools work without registration',
-            terms: 'Terms', changelog: 'Changelog', privacy: 'Privacy', contact: 'Feedback: contact@pdfonly.top', copyright: '© 2025 PDFSwitch. All rights reserved.'
+            terms: 'Terms', changelog: 'Changelog', privacy: 'Privacy', contact: 'Feedback: contact@pdfonly.top', copyright: '© 2025 PDFOnly. All rights reserved.'
         },
         zh: {
             allTools: '全部工具', convert: '转换', organize: '合并/拆分', compress: '压缩', security: '安全',
             kicker: '在线 PDF 工具箱', title: '所有 PDF 工具，一次上传智能选择',
-            subtitle: '拖入 PDF、图片、Word、Excel、PPT、HTML 或文本文件。PDFSwitch 会按文件类型自动匹配工具；PDF 文件可选择合并、拆分、压缩、转图片、加密等操作。',
+            subtitle: '拖入 PDF、图片、Word、Excel、PPT、HTML 或文本文件。PDFOnly 会按文件类型自动匹配工具；PDF 文件可选择合并、拆分、压缩、转图片、加密等操作。',
             uploadAria: '上传文件', uploadTitle: '拖放文件到这里', uploadHint: '或点击选择文件', chooseFiles: '选择文件',
             uploadSupport: '支持 PDF、PNG、JPG、WEBP、HEIF、SVG、TXT、HTML、MD、DOCX、RTF、Excel、PPT、EPUB',
             currentTask: '当前任务', idleTool: '请先上传文件或选择工具', reset: '重新选择',
@@ -215,12 +215,12 @@ function initializeLanguageSystem() {
             pdfToPngOp: 'PDF 转 PNG 图片', pdfToJpegOp: 'PDF 转 JPEG 图片', pdfToTxtOp: 'PDF 转文本', removePages: '删除页面', sortPages: '页面排序', addWatermark: '添加水印', editMetadata: '编辑元数据', removeMetadata: '删除元数据', flattenPdf: '扁平化 PDF', comparePdfs: '对比 PDF',
             localFirst: '本地优先', localFirstDesc: '常用处理在浏览器内完成',
             smartMatch: '智能匹配', smartMatchDesc: '上传后自动选择合适工具', freeUse: '免费使用', freeUseDesc: '核心工具无需注册',
-            terms: '服务条款', changelog: '更新记录', privacy: '隐私政策', contact: '问题反馈：contact@pdfonly.top', copyright: '© 2025 PDFSwitch. All rights reserved.'
+            terms: '服务条款', changelog: '更新记录', privacy: '隐私政策', contact: '问题反馈：contact@pdfonly.top', copyright: '© 2025 PDFOnly. All rights reserved.'
         },
         de: {
             allTools: 'Alle Tools', convert: 'Konvertieren', organize: 'Zusammenfügen/Teilen', compress: 'Komprimieren', security: 'Sicherheit',
             kicker: 'Online-PDF-Werkzeugkasten', title: 'Alle PDF-Tools, smarte Auswahl beim Hochladen',
-            subtitle: 'Ziehe PDFs, Bilder, Word-, Excel-, PPT-, HTML- oder Textdateien hierher. PDFSwitch erkennt den Dateityp und wählt das passende Werkzeug; PDFs können zusammengeführt, geteilt, komprimiert, in Bilder umgewandelt oder verschlüsselt werden.',
+            subtitle: 'Ziehe PDFs, Bilder, Word-, Excel-, PPT-, HTML- oder Textdateien hierher. PDFOnly erkennt den Dateityp und wählt das passende Werkzeug; PDFs können zusammengeführt, geteilt, komprimiert, in Bilder umgewandelt oder verschlüsselt werden.',
             uploadAria: 'Dateien hochladen', uploadTitle: 'Dateien hier ablegen', uploadHint: 'oder klicken, um Dateien zu wählen', chooseFiles: 'Dateien wählen',
             uploadSupport: 'Unterstützt PDF, PNG, JPG, WEBP, HEIF, SVG, TXT, HTML, MD, DOCX, RTF, Excel, PPT, EPUB',
             currentTask: 'Aktuelle Aufgabe', idleTool: 'Lade Dateien hoch oder wähle ein Werkzeug', reset: 'Erneut wählen',
@@ -235,12 +235,12 @@ function initializeLanguageSystem() {
             pdfToPngOp: 'PDF zu PNG', pdfToJpegOp: 'PDF zu JPEG', pdfToTxtOp: 'PDF zu Text', removePages: 'Seiten entfernen', sortPages: 'Seiten sortieren', addWatermark: 'Wasserzeichen hinzufügen', editMetadata: 'Metadaten bearbeiten', removeMetadata: 'Metadaten entfernen', flattenPdf: 'PDF reduzieren', comparePdfs: 'PDFs vergleichen',
             localFirst: 'Lokal zuerst', localFirstDesc: 'Übliche Verarbeitung läuft im Browser',
             smartMatch: 'Smarte Zuordnung', smartMatchDesc: 'Wählt das passende Werkzeug nach dem Hochladen', freeUse: 'Kostenlos', freeUseDesc: 'Kernwerkzeuge ohne Registrierung',
-            terms: 'Nutzungsbedingungen', changelog: 'Änderungen', privacy: 'Datenschutz', contact: 'Feedback: contact@pdfonly.top', copyright: '© 2025 PDFSwitch. Alle Rechte vorbehalten.'
+            terms: 'Nutzungsbedingungen', changelog: 'Änderungen', privacy: 'Datenschutz', contact: 'Feedback: contact@pdfonly.top', copyright: '© 2025 PDFOnly. Alle Rechte vorbehalten.'
         },
         it: {
             allTools: 'Tutti gli strumenti', convert: 'Converti', organize: 'Unisci/Dividi', compress: 'Comprimi', security: 'Sicurezza',
             kicker: 'Cassetta degli attrezzi PDF online', title: 'Tutti gli strumenti PDF, scelta intelligente al caricamento',
-            subtitle: 'Trascina PDF, immagini, file Word, Excel, PPT, HTML o di testo. PDFSwitch rileva il tipo di file e sceglie lo strumento giusto; i PDF possono essere uniti, divisi, compressi, convertiti in immagini o protetti.',
+            subtitle: 'Trascina PDF, immagini, file Word, Excel, PPT, HTML o di testo. PDFOnly rileva il tipo di file e sceglie lo strumento giusto; i PDF possono essere uniti, divisi, compressi, convertiti in immagini o protetti.',
             uploadAria: 'Carica file', uploadTitle: 'Trascina i file qui', uploadHint: 'oppure fai clic per scegliere', chooseFiles: 'Scegli file',
             uploadSupport: 'Supporta PDF, PNG, JPG, WEBP, HEIF, SVG, TXT, HTML, MD, DOCX, RTF, Excel, PPT, EPUB',
             currentTask: 'Attività corrente', idleTool: 'Carica file o scegli uno strumento', reset: 'Scegli di nuovo',
@@ -255,12 +255,12 @@ function initializeLanguageSystem() {
             pdfToPngOp: 'PDF in PNG', pdfToJpegOp: 'PDF in JPEG', pdfToTxtOp: 'PDF in testo', removePages: 'Rimuovi pagine', sortPages: 'Ordina pagine', addWatermark: 'Aggiungi filigrana', editMetadata: 'Modifica metadati', removeMetadata: 'Rimuovi metadati', flattenPdf: 'Appiattisci PDF', comparePdfs: 'Confronta PDF',
             localFirst: 'Prima in locale', localFirstDesc: 'Le elaborazioni comuni avvengono nel browser',
             smartMatch: 'Abbinamento intelligente', smartMatchDesc: 'Sceglie automaticamente lo strumento giusto dopo il caricamento', freeUse: 'Gratuito', freeUseDesc: 'Strumenti principali senza registrazione',
-            terms: 'Termini', changelog: 'Cronologia modifiche', privacy: 'Privacy', contact: 'Feedback: contact@pdfonly.top', copyright: '© 2025 PDFSwitch. Tutti i diritti riservati.'
+            terms: 'Termini', changelog: 'Cronologia modifiche', privacy: 'Privacy', contact: 'Feedback: contact@pdfonly.top', copyright: '© 2025 PDFOnly. Tutti i diritti riservati.'
         },
         ja: {
             allTools: 'すべてのツール', convert: '変換', organize: '結合/分割', compress: '圧縮', security: 'セキュリティ',
             kicker: 'オンライン PDF ツールキット', title: 'すべての PDF ツールを、アップロードで自動選択',
-            subtitle: 'PDF、画像、Word、Excel、PPT、HTML、テキストをドロップしてください。PDFSwitch がファイル形式を判定して最適なツールを選びます。PDF は結合、分割、圧縮、画像化、暗号化などに対応します。',
+            subtitle: 'PDF、画像、Word、Excel、PPT、HTML、テキストをドロップしてください。PDFOnly がファイル形式を判定して最適なツールを選びます。PDF は結合、分割、圧縮、画像化、暗号化などに対応します。',
             uploadAria: 'ファイルをアップロード', uploadTitle: 'ここにファイルをドロップ', uploadHint: 'またはクリックして選択', chooseFiles: 'ファイルを選択',
             uploadSupport: 'PDF、PNG、JPG、WEBP、HEIF、SVG、TXT、HTML、MD、DOCX、RTF、Excel、PPT、EPUB に対応',
             currentTask: '現在のタスク', idleTool: 'ファイルをアップロードするかツールを選択', reset: '選び直す',
@@ -275,12 +275,12 @@ function initializeLanguageSystem() {
             pdfToPngOp: 'PDF を PNG 画像へ', pdfToJpegOp: 'PDF を JPEG 画像へ', pdfToTxtOp: 'PDF をテキストへ', removePages: 'ページを削除', sortPages: 'ページを並べ替え', addWatermark: '透かしを追加', editMetadata: 'メタデータを編集', removeMetadata: 'メタデータを削除', flattenPdf: 'PDF をフラット化', comparePdfs: 'PDF を比較',
             localFirst: 'ローカル優先', localFirstDesc: '一般的な処理はブラウザ内で完了',
             smartMatch: 'スマート判定', smartMatchDesc: 'アップロード後に最適なツールを自動選択', freeUse: '無料で利用', freeUseDesc: '主要ツールは登録不要',
-            terms: '利用規約', changelog: '更新履歴', privacy: 'プライバシー', contact: 'フィードバック：contact@pdfonly.top', copyright: '© 2025 PDFSwitch. All rights reserved.'
+            terms: '利用規約', changelog: '更新履歴', privacy: 'プライバシー', contact: 'フィードバック：contact@pdfonly.top', copyright: '© 2025 PDFOnly. All rights reserved.'
         },
         ko: {
             allTools: '전체 도구', convert: '변환', organize: '병합/분할', compress: '압축', security: '보안',
             kicker: '온라인 PDF 도구 상자', title: '모든 PDF 도구를 업로드 한 번으로 자동 선택',
-            subtitle: 'PDF, 이미지, Word, Excel, PPT, HTML 또는 텍스트 파일을 올리세요. PDFSwitch가 파일 형식을 감지해 알맞은 도구를 선택합니다. PDF는 병합, 분할, 압축, 이미지 변환, 암호화 등을 지원합니다.',
+            subtitle: 'PDF, 이미지, Word, Excel, PPT, HTML 또는 텍스트 파일을 올리세요. PDFOnly가 파일 형식을 감지해 알맞은 도구를 선택합니다. PDF는 병합, 분할, 압축, 이미지 변환, 암호화 등을 지원합니다.',
             uploadAria: '파일 업로드', uploadTitle: '여기에 파일 놓기', uploadHint: '또는 클릭하여 선택', chooseFiles: '파일 선택',
             uploadSupport: 'PDF, PNG, JPG, WEBP, HEIF, SVG, TXT, HTML, MD, DOCX, RTF, Excel, PPT, EPUB 지원',
             currentTask: '현재 작업', idleTool: '파일을 업로드하거나 도구를 선택하세요', reset: '다시 선택',
@@ -295,12 +295,12 @@ function initializeLanguageSystem() {
             pdfToPngOp: 'PDF를 PNG 이미지로', pdfToJpegOp: 'PDF를 JPEG 이미지로', pdfToTxtOp: 'PDF를 텍스트로', removePages: '페이지 삭제', sortPages: '페이지 정렬', addWatermark: '워터마크 추가', editMetadata: '메타데이터 편집', removeMetadata: '메타데이터 삭제', flattenPdf: 'PDF 평면화', comparePdfs: 'PDF 비교',
             localFirst: '로컬 우선', localFirstDesc: '일반 처리는 브라우저에서 완료',
             smartMatch: '스마트 매칭', smartMatchDesc: '업로드 후 적합한 도구 자동 선택', freeUse: '무료 사용', freeUseDesc: '핵심 도구는 가입 없이 사용',
-            terms: '이용약관', changelog: '변경 기록', privacy: '개인정보 처리방침', contact: '피드백: contact@pdfonly.top', copyright: '© 2025 PDFSwitch. All rights reserved.'
+            terms: '이용약관', changelog: '변경 기록', privacy: '개인정보 처리방침', contact: '피드백: contact@pdfonly.top', copyright: '© 2025 PDFOnly. All rights reserved.'
         },
         fr: {
             allTools: 'Tous les outils', convert: 'Convertir', organize: 'Fusion/Division', compress: 'Compresser', security: 'Sécurité',
             kicker: 'Boîte à outils PDF en ligne', title: 'Tous les outils PDF, sélection intelligente à l’envoi',
-            subtitle: 'Déposez des PDF, images, fichiers Word, Excel, PPT, HTML ou texte. PDFSwitch détecte le type de fichier et choisit le bon outil ; les PDF peuvent être fusionnés, divisés, compressés, convertis en images ou protégés.',
+            subtitle: 'Déposez des PDF, images, fichiers Word, Excel, PPT, HTML ou texte. PDFOnly détecte le type de fichier et choisit le bon outil ; les PDF peuvent être fusionnés, divisés, compressés, convertis en images ou protégés.',
             uploadAria: 'Téléverser des fichiers', uploadTitle: 'Déposez les fichiers ici', uploadHint: 'ou cliquez pour choisir', chooseFiles: 'Choisir des fichiers',
             uploadSupport: 'PDF, PNG, JPG, WEBP, HEIF, SVG, TXT, HTML, MD, DOCX, RTF, Excel, PPT, EPUB pris en charge',
             currentTask: 'Tâche actuelle', idleTool: 'Téléversez des fichiers ou choisissez un outil', reset: 'Choisir à nouveau',
@@ -315,12 +315,12 @@ function initializeLanguageSystem() {
             pdfToPngOp: 'PDF en PNG', pdfToJpegOp: 'PDF en JPEG', pdfToTxtOp: 'PDF en texte', removePages: 'Supprimer des pages', sortPages: 'Trier les pages', addWatermark: 'Ajouter un filigrane', editMetadata: 'Modifier les métadonnées', removeMetadata: 'Supprimer les métadonnées', flattenPdf: 'Aplatir le PDF', comparePdfs: 'Comparer des PDF',
             localFirst: 'Local d’abord', localFirstDesc: 'Les traitements courants se font dans le navigateur',
             smartMatch: 'Correspondance intelligente', smartMatchDesc: 'L’outil adapté est choisi après l’envoi', freeUse: 'Gratuit', freeUseDesc: 'Outils principaux sans inscription',
-            terms: 'Conditions', changelog: 'Journal des mises à jour', privacy: 'Confidentialité', contact: 'Retour : contact@pdfonly.top', copyright: '© 2025 PDFSwitch. All rights reserved.'
+            terms: 'Conditions', changelog: 'Journal des mises à jour', privacy: 'Confidentialité', contact: 'Retour : contact@pdfonly.top', copyright: '© 2025 PDFOnly. All rights reserved.'
         },
         es: {
             allTools: 'Todas las herramientas', convert: 'Convertir', organize: 'Unir/Dividir', compress: 'Comprimir', security: 'Seguridad',
             kicker: 'Kit de herramientas PDF en línea', title: 'Todas las herramientas PDF con selección inteligente',
-            subtitle: 'Suelta PDF, imágenes, Word, Excel, PPT, HTML o texto. PDFSwitch detecta el tipo de archivo y elige la herramienta correcta; los PDF pueden unirse, dividirse, comprimirse, convertirse en imágenes o protegerse.',
+            subtitle: 'Suelta PDF, imágenes, Word, Excel, PPT, HTML o texto. PDFOnly detecta el tipo de archivo y elige la herramienta correcta; los PDF pueden unirse, dividirse, comprimirse, convertirse en imágenes o protegerse.',
             uploadAria: 'Subir archivos', uploadTitle: 'Suelta archivos aquí', uploadHint: 'o haz clic para elegir', chooseFiles: 'Elegir archivos',
             uploadSupport: 'Admite PDF, PNG, JPG, WEBP, HEIF, SVG, TXT, HTML, MD, DOCX, RTF, Excel, PPT, EPUB',
             currentTask: 'Tarea actual', idleTool: 'Sube archivos o elige una herramienta', reset: 'Elegir de nuevo',
@@ -335,12 +335,12 @@ function initializeLanguageSystem() {
             pdfToPngOp: 'PDF a PNG', pdfToJpegOp: 'PDF a JPEG', pdfToTxtOp: 'PDF a texto', removePages: 'Eliminar páginas', sortPages: 'Ordenar páginas', addWatermark: 'Añadir marca de agua', editMetadata: 'Editar metadatos', removeMetadata: 'Eliminar metadatos', flattenPdf: 'Aplanar PDF', comparePdfs: 'Comparar PDF',
             localFirst: 'Local primero', localFirstDesc: 'El procesamiento común se ejecuta en el navegador',
             smartMatch: 'Coincidencia inteligente', smartMatchDesc: 'Elige la herramienta adecuada tras subir', freeUse: 'Gratis', freeUseDesc: 'Herramientas clave sin registro',
-            terms: 'Términos', changelog: 'Registro de cambios', privacy: 'Privacidad', contact: 'Comentarios: contact@pdfonly.top', copyright: '© 2025 PDFSwitch. All rights reserved.'
+            terms: 'Términos', changelog: 'Registro de cambios', privacy: 'Privacidad', contact: 'Comentarios: contact@pdfonly.top', copyright: '© 2025 PDFOnly. All rights reserved.'
         },
         ru: {
             allTools: 'Все инструменты', convert: 'Конвертировать', organize: 'Объединить/Разделить', compress: 'Сжать', security: 'Безопасность',
             kicker: 'Онлайн-набор PDF-инструментов', title: 'Все PDF-инструменты, умный выбор при загрузке',
-            subtitle: 'Перетащите PDF, изображения, Word, Excel, PPT, HTML или текстовые файлы. PDFSwitch определит тип файла и выберет нужный инструмент; PDF можно объединять, разделять, сжимать, конвертировать в изображения и защищать.',
+            subtitle: 'Перетащите PDF, изображения, Word, Excel, PPT, HTML или текстовые файлы. PDFOnly определит тип файла и выберет нужный инструмент; PDF можно объединять, разделять, сжимать, конвертировать в изображения и защищать.',
             uploadAria: 'Загрузить файлы', uploadTitle: 'Перетащите файлы сюда', uploadHint: 'или нажмите, чтобы выбрать', chooseFiles: 'Выбрать файлы',
             uploadSupport: 'Поддержка PDF, PNG, JPG, WEBP, HEIF, SVG, TXT, HTML, MD, DOCX, RTF, Excel, PPT, EPUB',
             currentTask: 'Текущая задача', idleTool: 'Загрузите файлы или выберите инструмент', reset: 'Выбрать заново',
@@ -355,7 +355,7 @@ function initializeLanguageSystem() {
             pdfToPngOp: 'PDF в PNG', pdfToJpegOp: 'PDF в JPEG', pdfToTxtOp: 'PDF в текст', removePages: 'Удалить страницы', sortPages: 'Сортировать страницы', addWatermark: 'Добавить водяной знак', editMetadata: 'Изменить метаданные', removeMetadata: 'Удалить метаданные', flattenPdf: 'Свести PDF', comparePdfs: 'Сравнить PDF',
             localFirst: 'Локально прежде всего', localFirstDesc: 'Основная обработка идёт в браузере',
             smartMatch: 'Умный подбор', smartMatchDesc: 'Автоматически выбирает подходящий инструмент после загрузки', freeUse: 'Бесплатно', freeUseDesc: 'Базовые инструменты без регистрации',
-            terms: 'Условия', changelog: 'История изменений', privacy: 'Конфиденциальность', contact: 'Обратная связь: contact@pdfonly.top', copyright: '© 2025 PDFSwitch. Все права защищены.'
+            terms: 'Условия', changelog: 'История изменений', privacy: 'Конфиденциальность', contact: 'Обратная связь: contact@pdfonly.top', copyright: '© 2025 PDFOnly. Все права защищены.'
         }
     };
     const storageKey = 'pdfswitch-language';

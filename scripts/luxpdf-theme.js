@@ -1,6 +1,6 @@
 /*
-    PDFSwitch: A free, open-source, and private PDF web application.
-    Copyright (C) 2025 PDFSwitch
+    PDFOnly: A free, open-source, and private PDF web application.
+    Copyright (C) 2025 PDFOnly
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published by

@@ -23,7 +23,7 @@ function Test-ServerProcess {
 if (Test-Path -LiteralPath $PidFile) {
     $ExistingPid = (Get-Content -LiteralPath $PidFile -Raw).Trim()
     if ($ExistingPid -match '^\d+$' -and (Test-ServerProcess -ProcessId ([int]$ExistingPid))) {
-        Write-Host "PDFSwitch local service is already running at http://localhost:$Port/ (PID $ExistingPid)"
+        Write-Host "PDFOnly local service is already running at http://localhost:$Port/ (PID $ExistingPid)"
         exit 0
     }
 
@@ -56,7 +56,7 @@ $Process = Start-Process `
 
 Set-Content -LiteralPath $PidFile -Value $Process.Id -NoNewline
 
-Write-Host "PDFSwitch local service started: http://localhost:$Port/"
+Write-Host "PDFOnly local service started: http://localhost:$Port/"
 Write-Host "PID: $($Process.Id)"
 Write-Host "Log: $LogFile"
 Write-Host "Error log: $ErrorLogFile"

@@ -6,7 +6,7 @@ $LogFile = Join-Path $Root '.pdfswitch-server.log'
 $ErrorLogFile = Join-Path $Root '.pdfswitch-server.err.log'
 
 if (-not (Test-Path -LiteralPath $PidFile)) {
-    Write-Host 'PDFSwitch local service is not running: PID file not found.'
+    Write-Host 'PDFOnly local service is not running: PID file not found.'
     exit 0
 }
 
@@ -22,9 +22,9 @@ $ProcessId = [int]$PidValue
 try {
     $Process = Get-Process -Id $ProcessId -ErrorAction Stop
     Stop-Process -Id $Process.Id -Force
-    Write-Host "PDFSwitch local service stopped. PID: $ProcessId"
+    Write-Host "PDFOnly local service stopped. PID: $ProcessId"
 } catch {
-    Write-Host "PDFSwitch local service was not running. Stale PID: $ProcessId"
+    Write-Host "PDFOnly local service was not running. Stale PID: $ProcessId"
 }
 
 Remove-Item -LiteralPath $PidFile -Force

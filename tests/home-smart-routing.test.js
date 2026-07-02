@@ -35,7 +35,7 @@ function loadSandbox() {
 
     vm.createContext(sandbox);
     vm.runInContext(source, sandbox, { filename: sourcePath });
-    return sandbox.window.PDFSwitchHomeSmartWorkspace;
+    return sandbox.window.PDFOnlyHomeSmartWorkspace;
 }
 
 function fakeFile(name, type = '') {
